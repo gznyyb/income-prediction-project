@@ -96,12 +96,12 @@ def get_ml_pipeline(X, ml_pipelines_list):
 		])
 	svc_pipeline = Pipeline([
 		('pipeline_one_hot_encode', dcp.get_preprocess_pipeline(X)),
-		('svc', SVC(random_state=0, class_weight='balanced'))
+		('svc', SVC(random_state=0, class_weight='balanced', gamma='scale'))
 		])
 	svc_pca_pipeline = Pipeline([
 		('pipeline_one_hot_encode', dcp.get_preprocess_pipeline(X)),
 		('pca', PCA(n_components=42)), 
-		('svc', SVC(random_state=0, class_weight='balanced'))
+		('svc', SVC(random_state=0, class_weight='balanced', gamma='scale'))
 		])
 	rfc_pipeline = Pipeline([
 		('pipeline_label_encode', dcp.get_preprocess_pipeline(X, is_one_hot_encode=False)),
